@@ -1,5 +1,3 @@
---vim.env.XDG_DATA_HOME = "/f/Program Data/nvim/nvim-data"
-
 require("lihuax.core")
 require("lihuax.lazy")
 --require("lihuax.utils")
