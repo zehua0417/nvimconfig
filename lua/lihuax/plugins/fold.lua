@@ -41,10 +41,69 @@ return {
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+		-- set provider
+
+		local ufo = require("ufo")
+
+		-- 定义函数以检测 Markdown 中的 callout 块
+		local function get_markdown_callout_folds(bufnr)
+			local callout_folds = {}
+			local line_count = vim.api.nvim_buf_line_count(bufnr)
+			local is_in_callout = false
+			local callout_start = 0
+
+			for i = 0, line_count - 1 do
+				local line = vim.api.nvim_buf_get_lines(bufnr, i, i + 1, false)[1]
+
+				-- 检测以 "> [!" 开头的行，表示 callout 块的开始
+				if not is_in_callout and line:match("^%s*>%s*%[!%u+%]") then
+					is_in_callout = true
+					callout_start = i
+
+				-- 如果是空行或非 ">" 开头的行，则结束 callout 块
+				elseif is_in_callout and (line:match("^%s*$") or not line:match("^%s*>")) then
+					is_in_callout = false
+					table.insert(callout_folds, { startLine = callout_start, endLine = i - 1 })
+				end
+			end
+
+			-- 如果文件末尾仍处于 callout 块中，添加末尾未闭合的 callout
+			if is_in_callout then
+				table.insert(callout_folds, { startLine = callout_start, endLine = line_count - 1 })
+			end
+
+			return callout_folds
+		end
+
+		-- 将 Markdown 的 callout 折叠块与 Treesitter 折叠块合并
+		local function treesitter_and_markdown_callout_folding(bufnr)
+			local callout_folds = get_markdown_callout_folds(bufnr)
+			local treesitter_folds = require("ufo").getFolds(bufnr, "treesitter")
+
+			for _, fold in ipairs(callout_folds) do
+				table.insert(treesitter_folds, fold)
+			end
+
+			return treesitter_folds
+		end
+
+		-- provider_selector = function(bufnr, filetype, buftype)
+		--     if filetype == 'markdown' then
+		--         return treesitter_and_markdown_callout_folding
+		--     else
+		--         return {'treesitter', 'indent'}
+		--     end
+		-- end
+
 		require("ufo").setup({
 			provider_selector = function(bufnr, filetype, buftype)
-				-- use treesitter as provider
-				return { "treesitter", "indent" }
+				if filetype == "markdown" then
+					return treesitter_and_markdown_callout_folding
+				else
+					-- use treesitter as provider
+					return { "treesitter", "indent" }
+				end
 			end,
 			fold_virt_text_handler = handler,
 			preview = {
