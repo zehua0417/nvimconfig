@@ -15,6 +15,13 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
+-- Windows position exchange
+vim.keymap.set("n", "<C-w>h", "<cmd>wincmd H<CR>", opts)
+vim.keymap.set("n", "<C-w>j", "<cmd>wincmd J<CR>", opts)
+vim.keymap.set("n", "<C-w>k", "<cmd>wincmd K<CR>", opts)
+vim.keymap.set("n", "<C-w>l", "<cmd>wincmd L<CR>", opts)
+vim.keymap.set("n", "<C-w>r", "<cmd>wincmd r<CR>", opts)
+
 -- Resize with arrows
 -- delta: 2 lines
 vim.keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
