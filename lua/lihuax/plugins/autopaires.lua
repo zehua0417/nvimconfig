@@ -1,4 +1,4 @@
-return {
+--[[ return {
   "windwp/nvim-autopairs",
   event = { "InsertEnter" },
   dependencies = {
@@ -27,4 +27,10 @@ return {
     -- make autopairs and completion work together
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
   end,
+} ]]
+return {
+	"altermo/ultimate-autopair.nvim",
+	event = { "InsertEnter", "CmdlineEnter" },
+	branch = "v0.6", --recommended as each new version will have breaking changes
+	opts = {},
 }
