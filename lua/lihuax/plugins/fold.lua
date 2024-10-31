@@ -1,6 +1,7 @@
 return {
 	"kevinhwang91/nvim-ufo",
-	event = { "BufReadPre", "BufNewFile" },
+	-- BUG: index out of bounds
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "kevinhwang91/promise-async" },
 	config = function()
 		local handler = function(virtText, lnum, endLnum, width, truncate)
