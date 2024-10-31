@@ -3,6 +3,9 @@ return {
 	dependencies = {
 		"onsails/lspkind.nvim",
 	},
+	keys = {
+		{ "<leader>mo", mode = { "n" } },
+	},
 	config = function()
 		-- Example mapping to toggle outline
 		vim.keymap.set("n", "<leader>mo", "<cmd>Outline<CR>", { desc = "Toggle Outline" })

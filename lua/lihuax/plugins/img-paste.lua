@@ -1,6 +1,9 @@
 return {
 	"ekickx/clipboard-image.nvim",
 	pin = true,
+	keys = {
+		{ "<leader>mp", mode = { "n" } },
+	},
 	config = function()
 		local clipboard_image = require("clipboard-image")
 
