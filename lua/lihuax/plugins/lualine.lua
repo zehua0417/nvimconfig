@@ -78,21 +78,37 @@ return {
 		}
 
 		-- configure lualine with modified theme
+		-- local function wordcount()
+		-- 	return tostring(vim.fn.wordcount().words) .. " words"
+		-- end
+
+		-- Function to count English words and Chinese characters
 		local function wordcount()
-			return tostring(vim.fn.wordcount().words) .. " words"
+			local text = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, true), " ")
+
+			-- Count Chinese characters
+			-- local chinese_count = select(2, text:gsub("[%z\1-\127]", ""))
+			-- local chinese_count = select(2, text:gsub("[^\x00-\xff]", ""))
+			local chinese_count = select(2, text:gsub("[\194-\244][\128-\191]+", ""))
+
+			-- Count English words
+			local english_count = select(2, text:gsub("%a+", ""))
+
+			-- Return total count
+			return tostring(chinese_count + english_count) .. " "
 		end
 
 		-- local function charcount()
 		-- 	return tostring(vim.fn.strdisplaywidth(vim.api.nvim_get_current_line())) .. " chars"
 		-- end
 
-		local function charcount()
-			local chars = 0
-			for i = 1, vim.fn.line("$") do
-				chars = chars + vim.fn.strdisplaywidth(vim.fn.getline(i))
-			end
-			return tostring(chars) .. " chars"
-		end
+		-- local function charcount()
+		-- 	local chars = 0
+		-- 	for i = 1, vim.fn.line("$") do
+		-- 		chars = chars + vim.fn.strdisplaywidth(vim.fn.getline(i))
+		-- 	end
+		-- 	return tostring(chars) .. " chars"
+		-- end
 
 		local function is_markdown()
 			return vim.bo.filetype == "markdown" or vim.bo.filetype == "asciidoc"
@@ -108,6 +124,11 @@ return {
 				section_separators = { left = "", right = "" },
 			},
 			sections = {
+				lualine_c = {
+					-- 0 = just filename, 1 = relative path, 2 = absolute path
+					{ "filename", path = 0 },
+					"filesize",
+				},
 				lualine_x = {
 					-- {
 					-- 	lazy_status.updates,
@@ -129,7 +150,7 @@ return {
 					end,
 
 					{ wordcount, cond = is_markdown },
-					{ charcount, cond = is_markdown },
+					--{ charcount, cond = is_markdown },
 					{ "encoding" },
 					{ "fileformat" },
 					{ "filetype" },

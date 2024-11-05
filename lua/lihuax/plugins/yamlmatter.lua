@@ -5,12 +5,14 @@ return {
 		require("yamlmatter").setup({
 			icon_mappings = {
 				title = "",
-				author = "",
+				author = "",
 				date = "",
-				update = "",
+				update = "󰇡",
 				idea = "",
-				weather = "🌡",
+				weather = "",
 				default = "󰦨",
+				ANKI_DECK = "",
+				categories = "󰍜",
 			},
 			highlight_groups = {
 				icon = "MyIconHighlight",
