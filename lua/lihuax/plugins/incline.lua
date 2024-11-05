@@ -13,7 +13,7 @@ return {
 				local ft_icon, ft_color = devicons.get_icon_color(filename)
 
 				local function get_git_diff()
-					local icons = { removed = "", changed = "", added = "" }
+					local icons = { removed = " ", changed = " ", added = " " }
 					local signs = vim.b[props.buf].gitsigns_status_dict
 					local labels = {}
 					if signs == nil then
@@ -31,7 +31,7 @@ return {
 				end
 
 				local function get_diagnostic_label()
-					local icons = { error = "", warn = "", info = "", hint = "" }
+					local icons = { error = " ", warn = " ", info = " ", hint = " " }
 					local label = {}
 
 					for severity, icon in pairs(icons) do
@@ -54,7 +54,7 @@ return {
 					{ get_git_diff() },
 					{ (ft_icon or "") .. " ", guifg = ft_color, guibg = "none" },
 					{ filename .. " ", gui = vim.bo[props.buf].modified and "bold,italic" or "bold" },
-					{ "┊  " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
+					{ "┊ 󱂬 " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
 				}
 			end,
 		})

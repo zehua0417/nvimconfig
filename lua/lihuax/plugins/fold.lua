@@ -37,6 +37,8 @@ return {
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
 		vim.cmd("highlight Folded guibg=none")
+		--vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+		vim.o.fillchars = [[foldopen:,foldclose:]]
 
 		-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
@@ -109,7 +111,7 @@ return {
 			preview = {
 				win_config = {
 					border = { "", "─", "", "", "", "─", "", "" },
-					winhighlight = "Normal:Folded",
+					winhighlight = "Normal:Normal",
 					winblend = 0,
 				},
 				mappings = {

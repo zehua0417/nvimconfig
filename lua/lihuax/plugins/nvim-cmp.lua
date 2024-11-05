@@ -102,5 +102,12 @@ return {
 				{ name = "path" }, -- For path completion
 			}),
 		})
+
+		local lspkind = require("lspkind")
+		lspkind.init({
+			symbol_map = {
+				Copilot = " ",
+			},
+		})
 	end,
 }
