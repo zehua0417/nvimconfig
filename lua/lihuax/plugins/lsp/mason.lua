@@ -43,6 +43,8 @@ return {
 				"perlnavigator", -- perl
 				"sqlls", -- sql
 				"ast_grep", -- rust
+				--"java_language_server", -- java
+				"jdtls",
 			},
 		})
 
@@ -60,6 +62,7 @@ return {
 				--"lsp_format",
 				-- "fallback",
 				"markdownlint-cli2",
+				"google-java-format",
 			},
 		})
 	end,
