@@ -65,7 +65,7 @@ return {
 				example = { raw = "[!EXAMPLE]", rendered = "󰉹 Example", highlight = "RenderMarkdownHint" },
 				quote = { raw = "[!QUOTE]", rendered = "󱆨 Quote", highlight = "RenderMarkdownQuote" },
 				cite = { raw = "[!CITE]", rendered = "󱆨 Cite", highlight = "RenderMarkdownQuote" },
-				anki = { raw = "[!ANKI]", rendered = "󰭳 Anki", highlight = "RenderMarkdownQuote" },
+				anki = { raw = "[!ANKI]", rendered = "󰭷 Anki", highlight = "RenderMarkdownQuote" },
 			},
 		})
 	end,
