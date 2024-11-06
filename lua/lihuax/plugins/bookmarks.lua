@@ -9,7 +9,7 @@ return {
 		require("bookmarks").setup()
 		require("telescope").load_extension("bookmarks")
 		require("bookmarks").setup({
-			storage_dir = "", -- Default path: vim.fn.stdpath("data").."/bookmarks,  if not the default directory, should be absolute path",
+			storage_dir = "F:/Backup/bookmarks", -- Default path: vim.fn.stdpath("data").."/bookmarks,  if not the default directory, should be absolute path",
 			mappings_enabled = true, -- If the value is false, only valid for global keymaps: toggle、add、delete_on_virt、show_desc
 			keymap = {
 				toggle = "<leader>bb", -- Toggle bookmarks(global keymap)
