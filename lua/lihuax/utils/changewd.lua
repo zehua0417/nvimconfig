@@ -11,3 +11,4 @@ end
 
 -- Create a command to call the function
 vim.api.nvim_create_user_command("ChangeCwdToFile", ChangeToCurrentFileDirectory, {})
+vim.api.nvim_set_keymap("n", "<leader>cd", ":ChangeCwdToFile<CR>", { noremap = true, silent = true })

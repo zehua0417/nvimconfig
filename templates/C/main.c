@@ -3,12 +3,12 @@
  * @author {{_author_}}
  * @email {{_email_}}
  * @time {{_lua:os.date("%y-%m-%d %H:%M")_}}
- * @description
+ * @description {{_file_name_}}
  */
 
-#include<stdio.h>
+#include <stdio.h>
 
-int main(void) { 
-    {{_cursor_}}
-    return 0;
+int main(void) {
+  {{_cursor_}}
+  return 0;
 }

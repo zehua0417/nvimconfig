@@ -6,23 +6,23 @@
  * @description
  */
 
-#ifndef __{{_file_name_}}__
-#define __{{_file_name_}}__
+#ifndef __{{_upper_file_}}__
+#define __{{_upper_file_}}__
 
 /*
  * @brief definition
  */
-class {{_file_name_}}{
+class {{_camel_file_}}{
   private:
   // Private members
     {{_cursor_}}
 
   public:
     // Constructor
-    {{_file_name_}}();
+    {{_camel_file_}}();
 
     // Destructor
-    ~{{_file_name_}}();
+    ~{{_camel_file_}}();
 };
 
-#endif // __{{_file_name_}}__
+#endif // __{{_upper_file_}}__

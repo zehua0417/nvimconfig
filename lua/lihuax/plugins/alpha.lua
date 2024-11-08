@@ -41,12 +41,18 @@ return {
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
+			dashboard.button("b", "󰸖  > bookmarks", "<cmd>Telescope bookmarks<CR>"),
+			dashboard.button("r", "󱑅  > Recent Files", "<cmd>Telescope oldfiles<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
 			dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
 			--dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+			dashboard.button("c", "  > Go to config dir", "<cmd>NvimTreeOpen ~/.config/nvim<CR>"),
 			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
-			dashboard.button("c", "  > Go to config dir", "<cmd>cd ~/.config/nvim<CR>"),
+		}
+		dashboard.section.footer.val = {
+			[[ Have a Nice Day ]],
+			[[         󰌢         ]],
 		}
 
 		-- Send config to alpha

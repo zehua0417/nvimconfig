@@ -12,6 +12,7 @@ return {
 
 		-- import mason_lspconfig plugin
 		local mason_lspconfig = require("mason-lspconfig")
+		local mason_tool_installer = require("mason-tool-installer")
 
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -78,6 +79,30 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 		end
 
+		mason_lspconfig.setup({
+			-- list of servers for mason to install
+			ensure_installed = {
+				-- "tsserver",
+				--"html",
+				--"cssls",
+				--"tailwindcss",
+				--"svelte",
+				"lua_ls", -- lua
+				--"graphql",
+				--"emmet_ls",
+				--"prismals",
+				"pyright", -- python
+				-- "r_language_server", -- R but Failed
+				"clangd", -- C/C++
+				-- "remark_ls", -- md
+				"perlnavigator", -- perl
+				"sqlls", -- sql
+				"ast_grep", -- rust
+				--"java_language_server", -- java
+				"jdtls",
+			},
+		})
+
 		mason_lspconfig.setup_handlers({
 			-- default handler for installed servers
 			function(server_name)
@@ -131,6 +156,24 @@ return {
 					},
 				})
 			end,
+		})
+
+		mason_tool_installer.setup({
+			ensure_installed = {
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
+				"isort", -- python formatter
+				"black", -- python formatter
+				-- "pylint",
+				-- "eslint_d",
+				"clang-format",
+				-- "llf", --failed
+				-- "rustfmt",
+				--"lsp_format",
+				-- "fallback",
+				"markdownlint-cli2",
+				"google-java-format",
+			},
 		})
 	end,
 }

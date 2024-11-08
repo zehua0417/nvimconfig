@@ -4,14 +4,15 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
+	cmd = { "Mason" },
+	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown" },
 	config = function()
 		-- import mason
 		local mason = require("mason")
 
 		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
-
-		local mason_tool_installer = require("mason-tool-installer")
+		-- local mason_lspconfig = require("mason-lspconfig")
+		-- local mason_tool_installer = require("mason-tool-installer")
 
 		-- enable mason and configure icons
 		mason.setup({
@@ -21,48 +22,6 @@ return {
 					package_pending = "➜",
 					package_uninstalled = "✗",
 				},
-			},
-		})
-
-		mason_lspconfig.setup({
-			-- list of servers for mason to install
-			ensure_installed = {
-				-- "tsserver",
-				--"html",
-				--"cssls",
-				--"tailwindcss",
-				--"svelte",
-				"lua_ls", -- lua
-				--"graphql",
-				--"emmet_ls",
-				--"prismals",
-				"pyright", -- python
-				-- "r_language_server", -- R but Failed
-				"clangd", -- C/C++
-				-- "remark_ls", -- md
-				"perlnavigator", -- perl
-				"sqlls", -- sql
-				"ast_grep", -- rust
-				--"java_language_server", -- java
-				"jdtls",
-			},
-		})
-
-		mason_tool_installer.setup({
-			ensure_installed = {
-				"prettier", -- prettier formatter
-				"stylua", -- lua formatter
-				"isort", -- python formatter
-				"black", -- python formatter
-				-- "pylint",
-				-- "eslint_d",
-				"clang-format",
-				-- "llf", --failed
-				-- "rustfmt",
-				--"lsp_format",
-				-- "fallback",
-				"markdownlint-cli2",
-				"google-java-format",
 			},
 		})
 	end,

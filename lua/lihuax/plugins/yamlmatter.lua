@@ -1,6 +1,6 @@
 return {
 	"ray-x/yamlmatter.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	ft = { "yaml", "markdown" },
 	config = function()
 		require("yamlmatter").setup({
 			icon_mappings = {

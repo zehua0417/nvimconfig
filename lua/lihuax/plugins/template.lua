@@ -1,6 +1,7 @@
 return {
 	"glepnir/template.nvim",
 	cmd = { "Template", "TemProject" },
+	keys = { "<leader>tl", mode = { "n" } },
 	config = function()
 		require("template").setup({
 			temp_dir = "C:/Users/admin/AppData/Local/nvim/templates",
@@ -106,5 +107,8 @@ return {
 		require("template").register("{{_nextweeknum_}}", function()
 			return getWeekNumberOfYear(os.time() + 7 * 24 * 60 * 60)
 		end)
+		vim.keymap.set("n", "<Leader>tl", function()
+			vim.fn.feedkeys(":Template ")
+		end, { remap = true })
 	end,
 }

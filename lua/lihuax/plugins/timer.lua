@@ -111,5 +111,13 @@ return {
 				},
 			},
 		})
+
+		local keymap = vim.keymap -- for conciseness
+		keymap.set("n", "<leader>tms", "<cmd>TimerSession pomodoro<cr>", { desc = "timer session pomodoro start" })
+		keymap.set("n", "<leader>tmh", "<cmd>TimerHide<cr>", { desc = "hide timer" })
+		keymap.set("n", "<leader>tmd", "<cmd>TimerHide<cr>", { desc = "display timer" })
+		keymap.set("n", "<leader>tmp", "<cmd>TimerPause<cr>", { desc = "timer pause" })
+		keymap.set("n", "<leader>tmr", "<cmd>TimerPause<cr>", { desc = "timer resume" })
+		keymap.set("n", "<leader>tmb", "<cmd>TimerPause<cr>", { desc = "timer break" })
 	end,
 }

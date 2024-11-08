@@ -2,6 +2,7 @@ local map = vim.keymap.set
 
 -- copy and paste use ctrl/shift + insert
 map("i", "<S-Insert>", "<C-R>+")
+map("c", "<S-Insert>", "<C-R>+")
 map("v", "<C-Insert>", '"+y')
 
 -- change neovide scale
