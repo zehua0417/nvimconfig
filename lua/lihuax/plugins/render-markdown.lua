@@ -96,7 +96,7 @@ return {
 			-- "Headline5Fg",
 			-- "Headline6Fg",
 		},
-		vim.keymap.set("n", "<leader>/", "<cmd>RenderMarkdown toggle<cr>", { desc = "reder markdown toogle" }),
+		vim.keymap.set("n", "<leader>/", "<cmd>RenderMarkdown toggle<cr>", { desc = "render markdown toogle" }),
 	},
 }
 

@@ -4,6 +4,14 @@ return {
 	--version = "*", -- Recommended, use latest release instead of latest commit
 	lazy = true,
 	cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
+	keys = {
+		{ "<leader>tms", mode = { "n" }, desc = "timer session pomodoro start" },
+		{ "<leader>tmh", mode = { "n" }, desc = "hide timer" },
+		{ "<leader>tmd", mode = { "n" }, desc = "display timer" },
+		{ "<leader>tmp", mode = { "n" }, desc = "timer pause" },
+		{ "<leader>tmr", mode = { "n" }, desc = "timer resume" },
+		{ "<leader>tmb", mode = { "n" }, desc = "timer break" },
+	},
 	dependencies = {
 		-- Optional, but highly recommended if you want to use the "Default" timer
 		"rcarriga/nvim-notify",
@@ -65,7 +73,7 @@ return {
 			notifiers = {
 				-- The "Default" notifier uses 'vim.notify' and works best when you have 'nvim-notify' installed.
 				{
-					name = "Default",
+					name = "System",
 					opts = {
 						-- With 'nvim-notify', when 'sticky = true' you'll have a live timer pop-up
 						-- continuously displayed. If you only want a pop-up notification when the timer starts
@@ -97,17 +105,26 @@ return {
 				Break = {
 					{ name = "System" },
 				},
+				Study = {
+					{ name = "System" },
+				},
+				ShortBreak = {
+					{ name = "System" },
+				},
+				LongBreak = {
+					{ name = "System" },
+				},
 			},
 			-- You can optionally define custom timer sessions.
 			sessions = {
 				-- Example session configuration for a session called "pomodoro".
 				pomodoro = {
-					{ name = "Study", duration = "25m" },
-					{ name = "Short Break", duration = "5m" },
-					{ name = "Study", duration = "25m" },
-					{ name = "Short Break", duration = "5m" },
-					{ name = "Study", duration = "25m" },
-					{ name = "Long Break", duration = "15m" },
+					{ name = "Study", duration = "45s" },
+					{ name = "ShortBreak", duration = "5m" },
+					{ name = "Study", duration = "35m" },
+					{ name = "ShortBreak", duration = "5m" },
+					{ name = "Study", duration = "45m" },
+					{ name = "LongBreak", duration = "15m" },
 				},
 			},
 		})
@@ -115,9 +132,9 @@ return {
 		local keymap = vim.keymap -- for conciseness
 		keymap.set("n", "<leader>tms", "<cmd>TimerSession pomodoro<cr>", { desc = "timer session pomodoro start" })
 		keymap.set("n", "<leader>tmh", "<cmd>TimerHide<cr>", { desc = "hide timer" })
-		keymap.set("n", "<leader>tmd", "<cmd>TimerHide<cr>", { desc = "display timer" })
+		keymap.set("n", "<leader>tmd", "<cmd>TimerShow<cr>", { desc = "display timer" })
 		keymap.set("n", "<leader>tmp", "<cmd>TimerPause<cr>", { desc = "timer pause" })
-		keymap.set("n", "<leader>tmr", "<cmd>TimerPause<cr>", { desc = "timer resume" })
-		keymap.set("n", "<leader>tmb", "<cmd>TimerPause<cr>", { desc = "timer break" })
+		keymap.set("n", "<leader>tmr", "<cmd>TimerResume<cr>", { desc = "timer resume" })
+		keymap.set("n", "<leader>tmb", "<cmd>TimerStop<cr>", { desc = "timer break" })
 	end,
 }

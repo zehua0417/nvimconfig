@@ -13,6 +13,24 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSignHint" })
 
+		local function my_on_attach(bufnr)
+			local api = require("nvim-tree.api")
+
+			local function opts(desc)
+				return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+			end
+
+			-- default mappings
+			api.config.mappings.default_on_attach(bufnr)
+
+			-- custom mappings
+			-- vim.keymap.set("n", "<C-t>", api.tree.change_root_to_parent, opts("Up"))
+			-- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+			vim.keymap.set("n", "h", api.tree.change_root_to_parent, opts("Up"))
+			vim.keymap.set("n", "l", api.tree.change_root_to_node, opts("Change Dir"))
+			vim.keymap.set("n", "o", api.node.open.edit, opts("Open"))
+		end
+
 		nvimtree.setup({
 			view = {
 				width = 30,
@@ -48,6 +66,7 @@ return {
 			git = {
 				ignore = false,
 			},
+			on_attach = my_on_attach,
 		})
 
 		-- set keymaps
@@ -66,7 +85,7 @@ return {
 			"n",
 			"<leader>ed",
 			':lua require("nvim-tree.api").tree.open({ path = vim.fn.getcwd() })<CR>',
-			{ noremap = true, silent = true }
+			{ noremap = true, silent = true, desc = "toggle nvim tree on current dir" }
 		)
 		--("c", "  > Go to config dir", "<cmd>NvimTreeOpen ~/.config/nvim<CR>"),
 	end,

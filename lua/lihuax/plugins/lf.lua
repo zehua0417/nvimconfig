@@ -4,6 +4,6 @@ return {
 	config = function()
 		vim.cmd("let g:lf_map_keys = 0")
 		vim.cmd("let g:floaterm_opener = 'vsplit'")
-		vim.keymap.set("n", "<leader>tl", "<cmd>Lf<cr>", { desc = "Open lf" })
+		vim.keymap.set("n", "<leader>te", "<cmd>Lf<cr>", { desc = "Open lf" })
 	end,
 }

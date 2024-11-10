@@ -36,6 +36,8 @@ keymap.set("n", "<C-d>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buff
 -- vim.api.nvim_set_keymap("n", "<A-j>", ":bnext<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<A-k>", ":bprev<CR>", { noremap = true, silent = true })
 
+keymap.set("n", "<leader>aw", "<cmd>set wrap!<CR>", { desc = "toggle wrap" })
+
 -----------------
 -- Visual mode --
 -----------------
@@ -43,9 +45,6 @@ keymap.set("n", "<C-d>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buff
 -- Hint: start visual mode with the same area as the previous area and the same mode
 keymap.set("v", "<", "<gv", opts)
 keymap.set("v", ">", ">gv", opts)
-
--- set leader key to space
-vim.g.mapleader = " "
 
 -- General Keymaps -------------------
 

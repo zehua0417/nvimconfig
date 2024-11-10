@@ -1,4 +1,4 @@
-return {
+--[[ return {
 	"crusj/bookmarks.nvim",
 	-- keys = {
 	-- 	{ "<leader>bb", mode = { "n" } },
@@ -6,8 +6,6 @@ return {
 	branch = "main",
 	dependencies = { "nvim-web-devicons" },
 	config = function()
-		require("bookmarks").setup()
-		require("telescope").load_extension("bookmarks")
 		require("bookmarks").setup({
 			storage_dir = "", -- Default path: vim.fn.stdpath("data").."/bookmarks,  if not the default directory, should be absolute path",
 			mappings_enabled = true, -- If the value is false, only valid for global keymaps: toggle、add、delete_on_virt、show_desc
@@ -49,6 +47,37 @@ return {
 			-- •	%M: Two-digit minute (00 to 59)
 			-- •	%S: Two-digit second (00 to 59)
 			-- •	%p: AM/PM indicator
+		})
+
+		require("telescope").load_extension("bookmarks")
+	end,
+} ]]
+return {
+	"tomasky/bookmarks.nvim",
+	config = function()
+		require("bookmarks").setup({
+			-- sign_priority = 8,  --set bookmark sign priority to cover other sign
+			save_file = vim.fn.expand("$HOME/.config/bookmarks"), -- bookmarks save file path
+			keywords = {
+				["@t"] = "", -- mark annotation startswith @t ,signs this icon as `Todo`
+				["@w"] = "", -- mark annotation startswith @w ,signs this icon as `Warn`
+				["@f"] = "", -- mark annotation startswith @f ,signs this icon as `Fix`
+				["@n"] = "󱝽", -- mark annotation startswith @n ,signs this icon as `Note`
+			},
+			on_attach = function(bufnr)
+				local bm = require("bookmarks")
+				local keymap = vim.keymap
+				keymap.set("n", "<leader>bb", bm.bookmark_toggle, { desc = "bookmarks toogle" }) -- add or remove bookmark at current line
+				keymap.set("n", "<leader>bi", bm.bookmark_ann, { desc = "edit mark annotation" }) -- add or edit mark annotation at current line
+				keymap.set("n", "<leader>bc", bm.bookmark_clean, { desc = "clean all markrs in buffer" }) -- clean all marks in local buffer
+				keymap.set("n", "<leader>bn", bm.bookmark_next, { desc = "next mark in  buffer" }) -- jump to next mark in local buffer
+				keymap.set("n", "<leader>bp", bm.bookmark_prev, { desc = "previous mark in buffer" }) -- jump to previous mark in local buffer
+				keymap.set("n", "<leader>bl", bm.bookmark_list, { desc = "show bookmark list" }) -- show marked file list in quickfix window
+				keymap.set("n", "<leader>bx", bm.bookmark_clear_all, { desc = "remove all bookmarks" }) -- removes all bookmarks
+			end,
+			require("telescope").load_extension("bookmarks"),
+			vim.keymap.set("n", "<leader>fm", "<cmd>Telescope bookmarks list<cr>", { desc = "Find bookmarks" }),
+			sign_priority = 8,
 		})
 	end,
 }

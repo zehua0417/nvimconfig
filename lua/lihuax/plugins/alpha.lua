@@ -41,7 +41,8 @@ return {
 		-- Set menu
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-			dashboard.button("b", "󰸖  > bookmarks", "<cmd>Telescope bookmarks<CR>"),
+			dashboard.button("n", "󰹕  > Notes", "<cmd>NvimTreeOpen ~/Notes<CR>"),
+			dashboard.button("b", "󰸖  > Bookmarks", "<cmd>Telescope bookmarks list<cr>"),
 			dashboard.button("r", "󱑅  > Recent Files", "<cmd>Telescope oldfiles<CR>"),
 			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
 			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
