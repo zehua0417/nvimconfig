@@ -1,6 +1,15 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
+	cmd = "Telescope",
+	keys = {
+		{ "<leader>ff", mode = { "n" }, desc = "Fuzzy find files in cwd" },
+		{ "<leader>fr", mode = { "n" }, desc = "Fuzzy find recent files" },
+		{ "<leader>fs", mode = { "n" }, desc = "Find string in cwd" },
+		{ "<leader>fc", mode = { "n" }, desc = "Find string under cursor in cwd" },
+		{ "<leader>fb", mode = { "n" }, desc = "Fuzzy find buffers" },
+		{ "<leader>ft", mode = { "n" }, desc = "Find todos" },
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },

@@ -1,7 +1,10 @@
 return {
 	"glepnir/template.nvim",
 	cmd = { "Template", "TemProject" },
-	keys = { "<leader>tl", mode = { "n" } },
+	keys = {
+		{ "<leader>tl", ":Template ", desc = "Insert template" },
+	},
+
 	config = function()
 		require("template").setup({
 			temp_dir = "C:/Users/admin/AppData/Local/nvim/templates",
@@ -12,7 +15,7 @@ return {
 		local function get_weekday_date(today, n)
 			local year, month, day = today:match("(%d+)-(%d+)-(%d+)")
 			local date = os.time({ year = year, month = month, day = day })
-			local weekday = os.date("*t", date).wday - 1 -- Lua中wday为1-7，减1变为0-6
+			local weekday = os.date("*t", date).wday - 1
 			local offset = n - weekday
 			local target_date = os.date("%Y-%m-%d", date + offset * 86400)
 			return target_date
@@ -107,8 +110,5 @@ return {
 		require("template").register("{{_nextweeknum_}}", function()
 			return getWeekNumberOfYear(os.time() + 7 * 24 * 60 * 60)
 		end)
-		vim.keymap.set("n", "<Leader>tl", function()
-			vim.fn.feedkeys(":Template ")
-		end, { remap = true })
 	end,
 }

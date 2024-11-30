@@ -16,12 +16,12 @@ gantt
     dateFormat HH:mm
     axisFormat %H:%M
 	section Items
-    wake up : milestone, m1, 10:20, 2m
-    rest : 10:30, 12:00
-	lunch : 12:10, 13:50
-	study : 14:00, 18:00
+    wake up : milestone, m1, ??:??, 2m
+	study : ??:00, ??:00
+	lunch : 12:10, 12:30
+	study : ??:00, ??:00
 	super : 18:00, 18:30
-	study : 18:30, 22:30
+	study : ??:00, ??:00
 	sleep : milestone, m2, 23:20, 4m
 
 	section Targets

@@ -26,11 +26,18 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true, desc = "Add __ to selected text" }
 )
 
-vim.keymap.set(
+vim.api.nvim_set_keymap(
 	"v",
 	"<leader>an",
 	":ChangeNum<cr>",
 	{ noremap = true, silent = true, desc = "Change circle number to arabic number" }
+)
+
+vim.api.nvim_set_keymap(
+	"v",
+	"<leader>ap",
+	":TogglePeriod<cr>",
+	{ noremap = true, silent = true, desc = "Toggle English period to Chinese" }
 )
 
 local function switch_text_in_visual_mode()
@@ -143,3 +150,35 @@ local function ChangeNum()
 end
 
 vim.api.nvim_create_user_command("ChangeNum", ChangeNum, { range = true })
+
+local function toggle_period()
+	-- 获取视觉模式下选中的区域
+	local start_pos = vim.fn.getpos("'<")
+	local end_pos = vim.fn.getpos("'>")
+	local start_row, start_col = start_pos[2], start_pos[3]
+	local end_row, end_col = end_pos[2], end_pos[3]
+
+	-- 获取选中的行内容
+	local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
+
+	-- 遍历行并替换
+	for i, line in ipairs(lines) do
+		if i == 1 then -- 第一行可能从中间开始
+			line = line:sub(1, start_col - 1) .. line:sub(start_col):gsub("%.", "。")
+		elseif i == #lines then -- 最后一行可能到中间结束
+			line = line:sub(1, end_col):gsub("%.", "。") .. line:sub(end_col + 1)
+			-- 修正：如果 end_col 是整行最后一个字符，则不拼接多余部分
+			if end_col == #line then
+				line = line:sub(1, end_col):gsub("%.", "。")
+			end
+		else -- 中间行完整替换
+			line = line:gsub("%.", "。")
+		end
+		lines[i] = line
+	end
+
+	-- 写回缓冲区
+	vim.api.nvim_buf_set_lines(0, start_row - 1, end_row, false, lines)
+end
+
+vim.api.nvim_create_user_command("TogglePeriod", toggle_period, { range = true })

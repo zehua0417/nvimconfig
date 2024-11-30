@@ -20,7 +20,8 @@ return {
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				java = { "google-java-format" },
-				python = { "isort", "black" },
+				-- python = { "isort", "black" },
+				python = { "black" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable

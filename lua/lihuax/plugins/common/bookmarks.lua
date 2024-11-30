@@ -54,9 +54,18 @@
 } ]]
 return {
 	"tomasky/bookmarks.nvim",
+	keys = {
+		{ "<leader>bb", mode = { "n" }, desc = "bookmarks toogle" },
+		{ "<leader>bi", mode = { "n" }, desc = "edit mark annotation" },
+		{ "<leader>bc", mode = { "n" }, desc = "clean all markrs in buffer" },
+		{ "<leader>bn", mode = { "n" }, desc = "next mark in  buffer" },
+		{ "<leader>bp", mode = { "n" }, desc = "previous mark in buffer" },
+		{ "<leader>bl", mode = { "n" }, desc = "show bookmark list" },
+		{ "<leader>bx", mode = { "n" }, desc = "remove all bookmarks" },
+	},
 	config = function()
 		require("bookmarks").setup({
-			-- sign_priority = 8,  --set bookmark sign priority to cover other sign
+			-- sign_priority = 8, --set bookmark sign priority to cover other sign
 			save_file = vim.fn.expand("$HOME/.config/bookmarks"), -- bookmarks save file path
 			keywords = {
 				["@t"] = "", -- mark annotation startswith @t ,signs this icon as `Todo`
@@ -75,9 +84,9 @@ return {
 				keymap.set("n", "<leader>bl", bm.bookmark_list, { desc = "show bookmark list" }) -- show marked file list in quickfix window
 				keymap.set("n", "<leader>bx", bm.bookmark_clear_all, { desc = "remove all bookmarks" }) -- removes all bookmarks
 			end,
-			require("telescope").load_extension("bookmarks"),
 			vim.keymap.set("n", "<leader>fm", "<cmd>Telescope bookmarks list<cr>", { desc = "Find bookmarks" }),
 			sign_priority = 8,
 		})
+		require("telescope").load_extension("bookmarks")
 	end,
 }

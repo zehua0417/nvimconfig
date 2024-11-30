@@ -1,10 +1,14 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
+	cmd = { "Mason" },
+	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
 		{ "folke/neodev.nvim", opts = {} },
+		"williamboman/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
 		-- import lspconfig plugin
@@ -86,20 +90,20 @@ return {
 				--"html",
 				--"cssls",
 				--"tailwindcss",
-				--"svelte",
-				"lua_ls", -- lua
+				-- "svelte",
+				--"lua_ls", -- lua
 				--"graphql",
 				--"emmet_ls",
 				--"prismals",
 				"pyright", -- python
 				-- "r_language_server", -- R but Failed
 				"clangd", -- C/C++
-				-- "remark_ls", -- md
+				--"remark_ls", -- md
 				"perlnavigator", -- perl
 				"sqlls", -- sql
 				"ast_grep", -- rust
-				--"java_language_server", -- java
-				"jdtls",
+				"java_language_server", -- java
+				-- "jdtls",
 			},
 		})
 
@@ -111,19 +115,19 @@ return {
 				})
 			end,
 			-- ["svelte"] = function()
-			--   -- configure svelte server
-			--   lspconfig["svelte"].setup({
-			--     capabilities = capabilities,
-			--     on_attach = function(client, bufnr)
-			--       vim.api.nvim_create_autocmd("BufWritePost", {
-			--         pattern = { "*.js", "*.ts" },
-			--         callback = function(ctx)
-			--           -- Here use ctx.match instead of ctx.file
-			--           client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-			--         end,
-			--       })
-			--     end,
-			--   })
+			-- 	-- configure svelte server
+			-- 	lspconfig["svelte"].setup({
+			-- 		capabilities = capabilities,
+			-- 		on_attach = function(client, bufnr)
+			-- 			vim.api.nvim_create_autocmd("BufWritePost", {
+			-- 				pattern = { "*.js", "*.ts" },
+			-- 				callback = function(ctx)
+			-- 					-- Here use ctx.match instead of ctx.file
+			-- 					client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+			-- 				end,
+			-- 			})
+			-- 		end,
+			-- 	})
 			-- end,
 			-- ["graphql"] = function()
 			--   -- configure graphql language server
@@ -153,6 +157,16 @@ return {
 								callSnippet = "Replace",
 							},
 						},
+					},
+				})
+			end,
+			["clangd"] = function()
+				lspconfig["clangd"].setup({
+					-- capabilities = capabilities,
+					cmd = {
+						"clangd",
+						"--query-driver=F:/Program Files/Scoop/apps/mingw-mstorsjo-llvm-ucrt/current/bin/*",
+						-- "--query-driver=F:/Program Files/Scoop/apps/cygwin/current/root/bin/*",
 					},
 				})
 			end,

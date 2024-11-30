@@ -1,9 +1,6 @@
 return {
 	"williamboman/mason.nvim",
-	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-	},
+	dependencies = {},
 	cmd = { "Mason" },
 	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown" },
 	config = function()

@@ -1,5 +1,6 @@
 return {
 	"xiyaowong/transparent.nvim",
+	cmd = { "TransparentEnable", "TransparentDisnable", "TransparentToggle" },
 	config = function()
 		require("transparent").setup({
 			-- table: default groups

@@ -145,6 +145,7 @@
 
 - `[n] <leader>mo` = toggle outline
 - `[n] <leader>mp` = paste image from clipboard
+- `[n] <leader>tl` = insert template
 - `[n] <leader>/` = toggle markdown render
 
 ### neovide

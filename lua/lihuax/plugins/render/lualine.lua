@@ -114,6 +114,23 @@ return {
 			return vim.bo.filetype == "markdown" or vim.bo.filetype == "asciidoc"
 		end
 
+		local function pomo()
+			local timer = require("pomo").get_first_to_finish()
+			if timer == nil then
+				return ""
+			end
+
+			return "󰄉 " .. tostring(timer)
+		end
+
+		local function pomo_loaded()
+			if package.loaded["pomo"] ~= nil then
+				return true
+			else
+				return false
+			end
+		end
+
 		lualine.setup({
 			-- options = {
 			-- 	theme = my_lualine_theme,
@@ -135,20 +152,7 @@ return {
 					-- 	cond = lazy_status.has_updates,
 					-- 	color = { fg = "#ff9e64" },
 					-- },
-					function()
-						local ok, pomo = pcall(require, "pomo")
-						if not ok then
-							return ""
-						end
-
-						local timer = pomo.get_first_to_finish()
-						if timer == nil then
-							return ""
-						end
-
-						return "󰄉 " .. tostring(timer)
-					end,
-
+					{ pomo, cond = pomo_loaded },
 					{ wordcount, cond = is_markdown },
 					--{ charcount, cond = is_markdown },
 					{ "encoding" },
