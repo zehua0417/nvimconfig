@@ -2,7 +2,7 @@ vim.cmd("let g:netrw_liststyle = 3")
 
 local opt = vim.opt
 
-opt.relativenumber = true
+-- opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
@@ -25,8 +25,15 @@ opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
-vim.cmd([[let &shell = '"C:/Program Files/Git/bin/bash.exe"']])
-vim.cmd([[let &shellcmdflag = '-s']])
+-- vim.cmd([[let &shell = '"C:/Program Files/Git/bin/bash.exe"']])
+-- vim.cmd([[let &shellcmdflag = '-s']])
+opt.shell = "pwsh.exe "
+opt.shellcmdflag =
+	"-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;"
+opt.shellredir = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+opt.shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode"
+opt.shellquote = ""
+opt.shellxquote = ""
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position

@@ -10,6 +10,7 @@ return {
 			temp_dir = "C:/Users/admin/AppData/Local/nvim/templates",
 			author = "Lihuax",
 			email = "zehuali0417@gmail.com",
+			use_treesitter = false,
 		})
 
 		local function get_weekday_date(today, n)

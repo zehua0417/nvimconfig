@@ -73,7 +73,7 @@ return {
 			notifiers = {
 				-- The "Default" notifier uses 'vim.notify' and works best when you have 'nvim-notify' installed.
 				{
-					name = "System",
+					name = "Default",
 					opts = {
 						-- With 'nvim-notify', when 'sticky = true' you'll have a live timer pop-up
 						-- continuously displayed. If you only want a pop-up notification when the timer starts
@@ -99,27 +99,27 @@ return {
 			},
 
 			-- Override the notifiers for specific timer names.
-			timers = {
-				-- For example, use only the "System" notifier when you create a timer called "Break",
-				-- e.g. ':TimerStart 2m Break'.
-				Break = {
-					{ name = "System" },
-				},
-				Study = {
-					{ name = "System" },
-				},
-				ShortBreak = {
-					{ name = "System" },
-				},
-				LongBreak = {
-					{ name = "System" },
-				},
-			},
+			--timers = {
+			--	-- For example, use only the "System" notifier when you create a timer called "Break",
+			--	-- e.g. ':TimerStart 2m Break'.
+			--	Break = {
+			--		{ name = "System" },
+			--	},
+			--	Study = {
+			--		{ name = "System" },
+			--	},
+			--	ShortBreak = {
+			--		{ name = "System" },
+			--	},
+			--	LongBreak = {
+			--		{ name = "System" },
+			--	},
+			--},
 			-- You can optionally define custom timer sessions.
 			sessions = {
 				-- Example session configuration for a session called "pomodoro".
 				pomodoro = {
-					{ name = "Study", duration = "45s" },
+					{ name = "Study", duration = "45m" },
 					{ name = "ShortBreak", duration = "5m" },
 					{ name = "Study", duration = "35m" },
 					{ name = "ShortBreak", duration = "5m" },

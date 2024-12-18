@@ -1,7 +1,8 @@
 return {
 	"b0o/incline.nvim",
 	-- Optional: Lazy load Incline
-	event = "VeryLazy",
+	-- event = "VeryLazy",
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
 		local devicons = require("nvim-web-devicons")
 		require("incline").setup({
@@ -57,6 +58,7 @@ return {
 					{ "┊ 󱂬 " .. vim.api.nvim_win_get_number(props.win), group = "DevIconWindows" },
 				}
 			end,
+			window = { zindex = 20 },
 		})
 	end,
 }

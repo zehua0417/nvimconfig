@@ -10,9 +10,11 @@ return {
 		local treesitter = require("nvim-treesitter.configs")
 
 		-- configure treesitter
-		treesitter.setup({ -- enable syntax highlighting
+		treesitter.setup({
+			-- enable syntax highlighting
 			highlight = {
 				enable = true,
+				disable = { "text", "tpl" },
 			},
 			-- enable indentation
 			indent = { enable = true },
@@ -45,6 +47,7 @@ return {
 			},
 			incremental_selection = {
 				enable = true,
+				disable = { "text", "tpl" },
 				keymaps = {
 					init_selection = "<C-space>",
 					node_incremental = "<C-space>",

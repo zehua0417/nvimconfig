@@ -13,6 +13,10 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	config = function()
+		require("notify").setup({
+			background_colour = "#000000",
+		})
+
 		require("noice").setup({
 			cmdline = {
 				enabled = true, -- enables the Noice cmdline UI
@@ -232,7 +236,17 @@ return {
 				},
 			}, ---@see section on views
 			---@type NoiceRouteConfig[]
-			routes = {}, --- @see section on routes
+			routes = {
+				filter = {
+					-- 过滤出来源为特定插件的消息
+					event = "msg_show",
+					kind = "silicon.nvim",
+				},
+				opts = {
+					-- 跳过 Noice 渲染
+					skip = true,
+				},
+			}, --- @see section on routes
 			---@type table<string, NoiceFilter>
 			status = {}, --- @see section on statusline components
 			---@type NoiceFormatOptions
@@ -240,3 +254,13 @@ return {
 		})
 	end,
 }
+
+-- return {
+-- 	"rcarriga/nvim-notify",
+-- 	event = "VeryLazy",
+-- 	config = function()
+-- 		require("notify").setup({
+-- 			--   background_colour = "#000000",
+-- 		})
+-- 	end,
+-- }

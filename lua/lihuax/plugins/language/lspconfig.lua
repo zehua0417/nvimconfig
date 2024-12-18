@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	-- event = { "BufReadPre", "BufNewFile" },
 	cmd = { "Mason" },
-	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown" },
+	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -91,11 +91,12 @@ return {
 				--"cssls",
 				--"tailwindcss",
 				-- "svelte",
-				--"lua_ls", -- lua
+				"lua_ls", -- lua
 				--"graphql",
 				--"emmet_ls",
 				--"prismals",
 				"pyright", -- python
+				"pylsp",
 				-- "r_language_server", -- R but Failed
 				"clangd", -- C/C++
 				--"remark_ls", -- md
@@ -104,6 +105,7 @@ return {
 				"ast_grep", -- rust
 				"java_language_server", -- java
 				-- "jdtls",
+				"julials", -- julia
 			},
 		})
 
@@ -114,35 +116,29 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			-- ["svelte"] = function()
-			-- 	-- configure svelte server
-			-- 	lspconfig["svelte"].setup({
-			-- 		capabilities = capabilities,
-			-- 		on_attach = function(client, bufnr)
-			-- 			vim.api.nvim_create_autocmd("BufWritePost", {
-			-- 				pattern = { "*.js", "*.ts" },
-			-- 				callback = function(ctx)
-			-- 					-- Here use ctx.match instead of ctx.file
-			-- 					client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-			-- 				end,
-			-- 			})
-			-- 		end,
-			-- 	})
-			-- end,
-			-- ["graphql"] = function()
-			--   -- configure graphql language server
-			--   lspconfig["graphql"].setup({
-			--     capabilities = capabilities,
-			--     filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-			--   })
-			-- end,
-			-- ["emmet_ls"] = function()
-			--   -- configure emmet language server
-			--   lspconfig["emmet_ls"].setup({
-			--     capabilities = capabilities,
-			--     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-			--   })
-			-- end,
+			["julials"] = function()
+				-- on_new_config = function(new_config, _)
+				-- 	local julia = vim.fn.expand("C://admin//.julia//environments//nvim-lspconfig//bin//julia")
+				-- 	if require("lspconfig").util.path.is_file(julia) then
+				-- 		vim.notify("Hello!")
+				-- 		new_config.cmd[1] = julia
+				-- 	end
+				-- end
+				lspconfig.julials.setup({
+					capabilities = capabilities,
+					filetypes = { "julia" },
+				})
+				-- local julia_ls_script = vim.fs.joinpath(vim.fn.stdpath("config"), "helpers", "julia_languageserver.jl")
+				-- lspconfig["julials"].setup({
+				-- 	cmd = { "julia", "--startup-file=no", "--history-file=no", julia_ls_script },
+				-- 	single_file_support = true,
+				-- 	on_attach = function(client, bufnr)
+				-- 		-- Disable automatic formatexpr since the LS.jl formatter isn't so nice.
+				-- 		vim.bo[bufnr].formatexpr = ""
+				-- 	end,
+				-- 	capabilities = capabilities,
+				-- })
+			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
 				lspconfig["lua_ls"].setup({

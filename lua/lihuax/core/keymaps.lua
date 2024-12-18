@@ -31,8 +31,8 @@ keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- switch between buffers use alt + j/k
-keymap.set("n", "<C-s>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
-keymap.set("n", "<C-d>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
+-- keymap.set("n", "<C-s>", "<cmd>BufferLineCycleNext<CR>", { desc = "Next buffer" })
+-- keymap.set("n", "<C-d>", "<cmd>BufferLineCyclePrev<CR>", { desc = "Previous buffer" })
 -- vim.api.nvim_set_keymap("n", "<A-j>", ":bnext<CR>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<A-k>", ":bprev<CR>", { noremap = true, silent = true })
 
