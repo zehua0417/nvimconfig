@@ -90,3 +90,4 @@ return {
 		--("c", "  > Go to config dir", "<cmd>NvimTreeOpen ~/.config/nvim<CR>"),
 	end,
 }
+

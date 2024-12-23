@@ -14,10 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ import = "lihuax.plugins" },
 	{ import = "lihuax.plugins.common" },
-	{ import = "lihuax.plugins.completion" },
+	-- { import = "lihuax.plugins.completion" },
 	{ import = "lihuax.plugins.render" },
-	{ import = "lihuax.plugins.language" },
-	{ import = "lihuax.plugins.language.markdown" },
+	{ import = "lihuax.plugins.languages" },
+	-- { import = "lihuax.plugins.language.markdown" },
+	{ import = "lihuax.plugins.ai" },
 	{ import = "lihuax.plugins.tools" },
 }, {
 	checker = {

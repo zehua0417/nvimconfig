@@ -119,7 +119,7 @@ return {
 			sessions = {
 				-- Example session configuration for a session called "pomodoro".
 				pomodoro = {
-					{ name = "Study", duration = "45s" },
+					{ name = "Study", duration = "45m" },
 					{ name = "ShortBreak", duration = "5m" },
 					{ name = "Study", duration = "35m" },
 					{ name = "ShortBreak", duration = "5m" },

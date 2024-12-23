@@ -7,7 +7,7 @@ return {
 
 	config = function()
 		require("template").setup({
-			temp_dir = "C:/Users/admin/AppData/Local/nvim/templates",
+			temp_dir = "~/.config/nvim/templates",
 			author = "Lihuax",
 			email = "zehuali0417@gmail.com",
 		})

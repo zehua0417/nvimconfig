@@ -14,7 +14,7 @@ function M.touch_today_diary()
 	local formatted_date = string.format("%04d-%02d-%02d", year, date.month, day)
 
 	-- 构建目录和文件路径
-	local base_path = "C:/Users/lihuax/Notes/diary"
+	local base_path = "/home/lihuax/Documents/obs_repo/diary"
 	local month_path = string.format("%s/%04d/%s", base_path, year, month)
 	local file_path = string.format("%s/%s.md", month_path, formatted_date)
 

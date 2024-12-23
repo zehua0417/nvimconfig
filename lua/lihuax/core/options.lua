@@ -25,8 +25,8 @@ opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
-vim.cmd([[let &shell = '"C:/Program Files/Git/bin/bash.exe"']])
-vim.cmd([[let &shellcmdflag = '-s']])
+vim.cmd([[let &shell = "bash"]])
+-- vim.cmd([[let &shellcmdflag = '-s']])
 
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
@@ -40,3 +40,4 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+

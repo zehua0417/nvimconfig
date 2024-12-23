@@ -5,6 +5,9 @@ local opts = {
 }
 local keymap = vim.keymap -- for conciseness
 
+-- set leader key to space
+vim.g.mapleader = " "
+
 -----------------
 -- Normal mode --
 -----------------
@@ -71,3 +74,4 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 ----------------
 
 keymap.set("t", "<Esc>", "<C-\\><C-n>", opts) -- exit terminal mode
+
