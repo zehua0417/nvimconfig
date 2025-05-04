@@ -238,5 +238,9 @@ return {
 			---@type NoiceFormatOptions
 			format = {}, --- @see section on formatting,
 		})
+
+		require("notify").setup({
+			background_colour = "#000000",
+		})
 	end,
 }

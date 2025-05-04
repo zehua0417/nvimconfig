@@ -12,6 +12,8 @@ vim.g.mapleader = " "
 -- Normal mode --
 -----------------
 
+keymap.set("n", "<leader>w", "<cmd>w!<CR>", { desc = "Forcee Write" })
+
 -- Hint: see `:h vim.map.set()`
 -- Better window navigation
 keymap.set("n", "<C-h>", "<C-w>h", opts)
@@ -74,4 +76,3 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 ----------------
 
 keymap.set("t", "<Esc>", "<C-\\><C-n>", opts) -- exit terminal mode
-

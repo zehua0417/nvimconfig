@@ -40,6 +40,14 @@ vim.api.nvim_set_keymap(
 	{ noremap = true, silent = true, desc = "Toggle English period to Chinese" }
 )
 
+-- print current buffer file path
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>al",
+	":echo expand('%:p')<CR>",
+	{ noremap = true, silent = true, desc = "Print current buffer file location" }
+)
+
 local function switch_text_in_visual_mode()
 	-- 获取当前视觉模式下选中的文本范围
 	vim.cmd('normal! gvg"')

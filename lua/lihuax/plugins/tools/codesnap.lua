@@ -1,55 +1,73 @@
--- BUG: Stack overflow, confilict with noise.nvim
 return {
-	"krivahtoo/silicon.nvim",
-	lazy = "true",
-	cmd = "Silicon",
-	build = "./install.sh",
-	config = function()
-		require("silicon").setup({
-			font = "Maple Mono NF CN",
-			theme = "Monokai Extended",
-			background = "#87f",
-			pad_horiz = 100, -- (number) The horizontal padding.
-			pad_vert = 80, -- (number) The vertical padding.
-			line_pad = 0, -- (number) The padding between lines.
-			tab_width = 4, -- (number) The tab width for the screenshot.
-			gobble = false, -- (boolean) Whether to trim extra indentation.
-			highlight_selection = false, -- (boolean) Whether to capture the whole file and highlight selected lines.
-			round_corner = true,
-			window_controls = true, -- (boolean) Whether to show window controls (minimize, maximize, close) in the screenshot.
-			window_title = function()
-				return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
-			end,
-			line_number = true,
-
-			-- Output configuration for the saved image
-			output = {
-				-- (string) The full path of the file to save to.
-				file = "",
-				-- (boolean) Whether to copy the image to clipboard instead of saving to file.
-				clipboard = false,
-				-- (string) Where to save images, defaults to the current directory.
-				path = "/home/lihuax/Pictures/Silicon/",
-				-- (string) The filename format to use. Can include placeholders for date and time.
-				-- https://time-rs.github.io/book/api/format-description.html#components
-				format = "silicon_[year][month][day]_[hour][minute][second].png",
-			},
-
-			shadow = {
-				blur_radius = 0.0, -- (number) The blur radius for the shadow, set to 0.0 for no shadow.
-				offset_x = 0, -- (number) The horizontal offset for the shadow.
-				offset_y = 0, -- (number) The vertical offset for the shadow.
-				color = "#555", -- (string) The color for the shadow.
-			},
-
-			watermark = {
-				text = " @zehua0417",
-				style = "bold",
-				color = "#222",
-			},
-		})
-	end,
+	"mistricky/codesnap.nvim",
+	build = "make build_generator",
+	keys = {
+		{ "<leader>sc", "<cmd>CodeSnap<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
+		{ "<leader>sp", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
+		{ "<leader>ss", "<cmd>CodeSnapSaveHighlight<cr>", mode = "x", desc = "Save selected code snap with highlight" },
+	},
+	opts = {
+		save_path = "~/Pictures/codesnap/",
+		has_breadcrumbs = true,
+		bg_theme = "grape",
+		show_workspace = true,
+		has_line_number = true,
+		watermark = " @zehua0417",
+	},
 }
+
+-- BUG: Stack overflow, confilict with noise.nvim
+-- return {
+-- 	"krivahtoo/silicon.nvim",
+-- 	lazy = "true",
+-- 	cmd = "Silicon",
+-- 	build = "./install.sh",
+-- 	config = function()
+-- 		require("silicon").setup({
+-- 			font = "Maple Mono NF CN",
+-- 			theme = "Monokai Extended",
+-- 			background = "#87f",
+-- 			pad_horiz = 100, -- (number) The horizontal padding.
+-- 			pad_vert = 80, -- (number) The vertical padding.
+-- 			line_pad = 0, -- (number) The padding between lines.
+-- 			tab_width = 4, -- (number) The tab width for the screenshot.
+-- 			gobble = false, -- (boolean) Whether to trim extra indentation.
+-- 			highlight_selection = false, -- (boolean) Whether to capture the whole file and highlight selected lines.
+-- 			round_corner = true,
+-- 			window_controls = true, -- (boolean) Whether to show window controls (minimize, maximize, close) in the screenshot.
+-- 			window_title = function()
+-- 				return vim.fn.fnamemodify(vim.fn.bufname(vim.fn.bufnr()), ":~:.")
+-- 			end,
+-- 			line_number = true,
+--
+-- 			-- Output configuration for the saved image
+-- 			output = {
+-- 				-- (string) The full path of the file to save to.
+-- 				file = "",
+-- 				-- (boolean) Whether to copy the image to clipboard instead of saving to file.
+-- 				clipboard = false,
+-- 				-- (string) Where to save images, defaults to the current directory.
+-- 				path = "/home/lihuax/Pictures/Silicon/",
+-- 				-- (string) The filename format to use. Can include placeholders for date and time.
+-- 				-- https://time-rs.github.io/book/api/format-description.html#components
+-- 				format = "silicon_[year][month][day]_[hour][minute][second].png",
+-- 			},
+--
+-- 			shadow = {
+-- 				blur_radius = 0.0, -- (number) The blur radius for the shadow, set to 0.0 for no shadow.
+-- 				offset_x = 0, -- (number) The horizontal offset for the shadow.
+-- 				offset_y = 0, -- (number) The vertical offset for the shadow.
+-- 				color = "#555", -- (string) The color for the shadow.
+-- 			},
+--
+-- 			watermark = {
+-- 				text = " @zehua0417",
+-- 				style = "bold",
+-- 				color = "#222",
+-- 			},
+-- 		})
+-- 	end,
+-- }
 
 -- return {
 -- 	"michaelrommel/nvim-silicon",

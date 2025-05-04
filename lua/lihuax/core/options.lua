@@ -25,7 +25,7 @@ opt.termguicolors = true
 opt.background = "dark" -- colorschemes that can be light or dark will be made dark
 opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 
-vim.cmd([[let &shell = "bash"]])
+vim.cmd([[let &shell = "zsh"]])
 -- vim.cmd([[let &shellcmdflag = '-s']])
 
 -- backspace
@@ -41,3 +41,4 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
+vim.api.nvim_set_hl(0, "Cursor", { foreground = "", background = "#FF0000" })

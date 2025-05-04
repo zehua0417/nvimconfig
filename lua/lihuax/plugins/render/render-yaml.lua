@@ -13,6 +13,7 @@ return {
 				default = "󰦨",
 				ANKI_DECK = "",
 				categories = "󰍜",
+				location = "",
 			},
 			highlight_groups = {
 				icon = "MyIconHighlight",

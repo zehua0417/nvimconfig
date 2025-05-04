@@ -1,4 +1,4 @@
-vim.o.guifont = "Maple Mono NF CN:h14"
+vim.o.guifont = "Maple Mono NF CN:h14:Regular:w:b"
 
 vim.g.neovide_transparency = 0.75
 --vim.g.transparency = 0.88

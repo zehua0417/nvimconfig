@@ -1,7 +1,7 @@
 return {
 	"neovim/nvim-lspconfig",
 	-- event = { "BufReadPre", "BufNewFile" },
-	cmd = { "Mason" },
+	-- cmd = { "Mason" },
 	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia", "tex" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",

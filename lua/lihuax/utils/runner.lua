@@ -65,7 +65,7 @@ local function open_scriptlan_runner()
 		print("No available script language found")
 		return
 	end
-	runner_term(cmd)
+	runner_term(cmd, "horizontal")
 end
 
 local function language_compiler()
@@ -81,13 +81,14 @@ local function comilerlan_runner(lang)
 	if lang == "c" then
 		-- vim.cmd('TermExec cmd="./bin/main.exe"')
 		vim.cmd('TermExec cmd="cd build && make"')
-		vim.cmd('TermExec cmd="cd .. && ./bin/main"')
+		vim.cmd('TermExec cmd="cd .. && ./bin/main.bin"')
 	elseif lang == "cpp" then
 		vim.cmd('TermExec cmd="cd build && make"')
-		vim.cmd('TermExec cmd="cd .. && ./bin/main"')
+		vim.cmd('TermExec cmd="cd .. && ./bin/main.bin"')
 	elseif lang == "tex" then
-		local filename = vim.fn.expand("%:r")
-		vim.cmd("!evince " .. filename .. ".pdf &")
+		-- local filename = vim.fn.expand("%:r")
+		local filename = vim.fn.expand("%:t:r")
+		vim.cmd("!evince output/" .. filename .. ".pdf &")
 	end
 end
 
@@ -117,7 +118,9 @@ local command = vim.api.nvim_create_user_command
 command("ScriptlanRunner", open_scriptlan_runner, {})
 command("CompilelanRunner", language_compiler, {})
 command("RunRunner", run, {})
+key("n", "<F17>", "<CMD>ScriptlanRunner<CR>", { noremap = true, silent = true })
 key("n", "<S-F5>", "<CMD>ScriptlanRunner<CR>", { noremap = true, silent = true })
+key("n", "<F29>", "<CMD>CompilelanRunner<CR>", { noremap = true, silent = true })
 key("n", "<C-F5>", "<CMD>CompilelanRunner<CR>", { noremap = true, silent = true })
 key("n", "<F5>", "<CMD>RunRunner<CR>", { noremap = true, silent = true })
 key("v", "<F5>", "<CMD>ToggleTermSendVisualLines<CR>", { noremap = true, silent = true })

@@ -1,4 +1,3 @@
--- TODO: add google api to get the calender events and tasks
 return {
 	"itchyny/calendar.vim",
 	cmd = "Calendar",
@@ -8,6 +7,9 @@ return {
 		{ "<leader>ch", mode = { "n" }, desc = "Open calender in horizontal split" },
 	},
 	config = function()
+		vim.g.calendar_google_calendar = 1
+		vim.g.calendar_google_task = 0
+		vim.cmd("source ~/.cache/calendar.vim/credentials.vim")
 		local keymap = vim.keymap -- for conciseness
 		keymap.set("n", "<leader>co", "<cmd>Calendar<cr>", { desc = "Open calender" })
 		keymap.set(

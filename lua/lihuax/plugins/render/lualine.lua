@@ -309,7 +309,7 @@ local function clock()
 		return ""
 	end
 
-	local time = tostring(os.date()):sub(11, 17)
+	local time = tostring(os.date()):sub(17, 21)
 	if os.time() % 2 == 1 then
 		time = time:gsub(":", " ")
 	end -- make the `:` blink

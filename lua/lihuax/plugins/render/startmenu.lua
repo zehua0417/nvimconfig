@@ -28,17 +28,29 @@ return {
 				---@type snacks.dashboard.Item[]
 				keys = {
 					{ icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-					{ icon = "󰹕 ", key = "n", desc = "Notes", action = ":NvimTreeOpen ~/Notes" },
-					{ icon = "󱗖 ", key = "d", desc = "Diary", action = "<leader>ad" },
+					{
+						icon = "󰹕 ",
+						key = "n",
+						desc = "Notes",
+						-- action = ":NvimTreeOpen ~/Documents/ob_repo",
+						action = ":cd ~/Documents/ob_repo | NvimTreeOpen .",
+					},
+					{ icon = "󱗖 ", key = "d", desc = "Diary", action = "<leader>dd" },
+					{
+						icon = " ",
+						key = "w",
+						desc = "Blogs",
+						action = ":cd /home/lihuax/Documents/Onedrive/work/GitHub/zehua0417/zehua0417.github.io/source | NvimTreeOpen .",
+					},
 					{
 						icon = "󰸖 ",
 						key = "b",
-						desc = "Open bookmarks",
+						desc = "Bookmarks",
 						action = ":Telescope bookmarks list",
 					},
 					{
 						-- icon = " ",
-						icon = "󱑅 ",
+						icon = "󱋢 ",
 						key = "r",
 						desc = "Recent Files",
 						action = ":lua Snacks.dashboard.pick('oldfiles')",
@@ -56,20 +68,39 @@ return {
 						action = ":lua Snacks.dashboard.pick('live_grep')",
 					},
 					{
+						icon = " ",
+						key = "c",
+						desc = "Calendar",
+						action = ":Calendar",
+					},
+					{
+						icon = " ",
+						key = "m",
+						desc = "Mails",
+						action = ":Mail",
+					},
+					{
+						icon = "󰊢 ",
+						key = "g",
+						desc = "Lazygit",
+						action = ":LazyGit",
+						enabled = vim.fn.isdirectory(".git") == 1,
+					},
+					{
 						icon = " ",
 						desc = "Browse Repo",
 						enabled = vim.fn.isdirectory(".git") == 1,
 						padding = 1,
-						key = "g",
+						key = "G",
 						action = function()
 							Snacks.gitbrowse()
 						end,
 					},
 					{
 						icon = " ",
-						key = "c",
+						key = "C",
 						desc = "Config",
-						action = ":NvimTreeOpen ~/.config/nvim",
+						action = ":cd ~/.config/nvim | NvimTreeOpen",
 					},
 					--{ icon = " ", key = "s", desc = "Restore Session", section = "session" },
 					{
@@ -83,12 +114,22 @@ return {
 				},
 				-- Used by the `header` section
 				header = [[
+
+
+
+
+
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
 ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
+
+
+
+
+]],
 				-- 				headerr = [[
 				-- ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 				-- ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋⣠⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
@@ -129,7 +170,7 @@ return {
 			sections = {
 				{
 					section = "header",
-					padding = 12,
+					padding = 2,
 				},
 				-- { section = "footer" },
 				-- { section = "rei" },
@@ -146,11 +187,23 @@ return {
 					pane = 2,
 					section = "terminal",
 					cmd = "cat ~/.config/rei",
+					-- cmd = "cat ~/.config/nerv",
 					-- random = 10,
-					-- pane = 2,
 					indent = 10,
 					height = 16,
 					padding = 2,
+				},
+				{
+					section = "terminal",
+					icon = "󰸗 ",
+					title = "calendar",
+					-- enabled = vim.fn.isdirectory(".git") == 0,
+					cmd = "cal",
+					-- random = 10,
+					pane = 2,
+					indent = 17,
+					height = 8,
+					-- padding = 1,
 				},
 				{
 					pane = 2,
@@ -164,33 +217,22 @@ return {
 					pane = 2,
 					indent = 2,
 					icon = " ",
-					title = "Projects",
+					title = "Recent Projects",
 					section = "projects",
 					padding = 1,
 				},
 				{
 					pane = 2,
 					icon = " ",
-					title = "Git Status",
+					title = "Git Diff",
 					section = "terminal",
 					enabled = vim.fn.isdirectory(".git") == 1,
 					cmd = "git --no-pager diff --stat -B -M -C",
-					height = 7,
+					-- cmd = "git status --short --branch --renames",
+					height = 5,
 					padding = 1,
 					ttl = 5 * 60,
-					indent = 3,
-				},
-				{
-					section = "terminal",
-					icon = "󰸗 ",
-					title = "calendar",
-					enabled = vim.fn.isdirectory(".git") == 0,
-					cmd = "cal",
-					-- random = 10,
-					pane = 2,
-					indent = 17,
-					height = 7,
-					padding = 1,
+					indent = 2,
 				},
 			},
 		},

@@ -2,7 +2,7 @@
 title: {{_file_name_}}
 author: {{_author_}}
 date: {{_lua:os.date("%Y-%m-%d %H:%M")_}}
-update: {{_lua:os.date("%Y-%m-%d %H:%M")_}}
+update: 2024-12-31 22:29:05
 weather: [, , , , , , , 󰖒, 󰢘]
 tags: [dairy]
 ---
@@ -10,25 +10,6 @@ tags: [dairy]
 ## Target
 
 - [ ]
-
-## Timeline
-
-```mermaid
-gantt
-    dateFormat HH:mm
-    axisFormat %H:%M
-	section Items
-    wake up : milestone, m1, ??:??, 2m
-	study : ??:00, ??:00
-	lunch : 12:10, 12:30
-	study : ??:00, ??:00
-	super : 18:00, 18:30
-	study : ??:00, ??:00
-	sleep : milestone, m2, 23:20, 4m
-
-	section Targets
-
-```
 
 ## Thought
 
