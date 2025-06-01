@@ -3,6 +3,9 @@ return {
 	ft = { "markdown" },
 	config = function()
 		require("image").setup({
+			rocks = {
+				hererocks = true, -- recommended if you do not have global installation of Lua 5.1.
+			},
 			backend = "kitty",
 			processor = "magick_rock", -- or "magick_cli"
 			integrations = {
@@ -10,7 +13,7 @@ return {
 					enabled = true,
 					clear_in_insert_mode = false,
 					download_remote_images = true,
-					only_render_image_at_cursor = false,
+					only_render_image_at_cursor = true,
 					floating_windows = false, -- if true, images will be rendered in floating markdown windows
 					filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
 				},

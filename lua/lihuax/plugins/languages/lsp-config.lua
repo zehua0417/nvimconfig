@@ -2,7 +2,7 @@ return {
 	"neovim/nvim-lspconfig",
 	-- event = { "BufReadPre", "BufNewFile" },
 	-- cmd = { "Mason" },
-	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia", "tex" },
+	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia", "tex", "go" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		{ "antosha417/nvim-lsp-file-operations", config = true },
@@ -107,52 +107,20 @@ return {
 				-- "jdtls",
 				"julials", -- julia
 				"texlab", -- latex
+				"gopls", -- go
 			},
 		})
 
-		mason_lspconfig.setup_handlers({
-			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			-- ["svelte"] = function()
-			-- 	-- configure svelte server
-			-- 	lspconfig["svelte"].setup({
-			-- 		capabilities = capabilities,
-			-- 		on_attach = function(client, bufnr)
-			-- 			vim.api.nvim_create_autocmd("BufWritePost", {
-			-- 				pattern = { "*.js", "*.ts" },
-			-- 				callback = function(ctx)
-			-- 					-- Here use ctx.match instead of ctx.file
-			-- 					client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-			-- 				end,
-			-- 			})
-			-- 		end,
-			-- 	})
-			-- end,
-			-- ["graphql"] = function()
-			--   -- configure graphql language server
-			--   lspconfig["graphql"].setup({
-			--     capabilities = capabilities,
-			--     filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-			--   })
-			-- end,
-			-- ["emmet_ls"] = function()
-			--   -- configure emmet language server
-			--   lspconfig["emmet_ls"].setup({
-			--     capabilities = capabilities,
-			--     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-			--   })
-			-- end,
-			["lua_ls"] = function()
-				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
+		-- 获取所有已安装的 server，并为每个设置
+		mason_lspconfig.get_installed_servers()
+
+		for _, server_name in ipairs(mason_lspconfig.get_installed_servers()) do
+			if server_name == "lua_ls" then
+				-- Lua 的特殊配置
+				lspconfig.lua_ls.setup({
 					capabilities = capabilities,
 					settings = {
 						Lua = {
-							-- make the language server recognize "vim" global
 							diagnostics = {
 								globals = { "vim" },
 							},
@@ -162,18 +130,13 @@ return {
 						},
 					},
 				})
-			end,
-			-- ["clangd"] = function()
-			-- 	lspconfig["clangd"].setup({
-			-- 		-- capabilities = capabilities,
-			-- 		cmd = {
-			-- 			"clangd",
-			-- 			"--query-driver=F:/Program Files/Scoop/apps/mingw-mstorsjo-llvm-ucrt/current/bin/*",
-			-- 			-- "--query-driver=F:/Program Files/Scoop/apps/cygwin/current/root/bin/*",
-			-- 		},
-			-- 	})
-			-- end,
-		})
+			else
+				-- 默认的通用配置
+				lspconfig[server_name].setup({
+					capabilities = capabilities,
+				})
+			end
+		end
 
 		mason_tool_installer.setup({
 			ensure_installed = {

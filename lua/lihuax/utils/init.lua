@@ -4,6 +4,7 @@ require("lihuax.utils.makeanki")
 require("lihuax.utils.runner")
 require("lihuax.utils.encryption")
 require("lihuax.utils.mail")
+require("lihuax.utils.greek")
 
 local diary = require("lihuax.utils.diary")
 vim.api.nvim_create_user_command("DiaryToday", diary.touch_today_diary, {})

@@ -444,29 +444,31 @@ local lualineConfig = {
 	-- should always include the tab element
 	tabline = {
 		lualine_a = {
+			"[[]]",
+			-- section_separators = emptySeparators,
+		},
+		lualine_b = {
 			{
 				"tabs",
 				mode = 1,
 				max_length = vim.o.columns * 0.7,
 				section_separators = emptySeparators,
-				cond = function()
-					return fn.tabpagenr("$") > 1
-				end,
+				-- cond = function()
+				-- 	return fn.tabpagenr("$") > 1
+				-- end,
 			},
 		},
-		lualine_b = {
-			{ "buffers", section_separators = emptySeparators },
-			-- { section_separators = emptySeparators },
-		},
+		-- { "buffers", section_separators = emptySeparators },
+		-- { section_separators = emptySeparators },
 		lualine_c = {},
 		lualine_x = {},
 		-- INFO dap and recording status defined in the respective plugin configs
 		-- for lualine_y and lualine_z for their lazy loading
-		lualine_y = {
+		lualine_y = {},
+		lualine_z = {
 			{ marksStatus },
 			{ clock, section_separators = emptySeparators },
 		},
-		lualine_z = {},
 	},
 	sections = {
 		lualine_a = {
@@ -513,6 +515,7 @@ local lualineConfig = {
 			"ccc-ui",
 		},
 		globalstatus = true,
+		always_show_tabline = false,
 
 		component_separators = { left = ")", right = "(" },
 		section_separators = { left = "", right = "" },

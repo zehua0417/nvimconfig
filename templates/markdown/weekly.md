@@ -12,12 +12,12 @@ author: {{_author_}}
 
 ## 🗓️days
 
-Sunday: [[{{_sunday_}}]]
-Monday: [[{{_monday_}}]]
-Tuesday: [[{{_tuesday_}}]]
-Wednesday: [[{{_wednesday_}}]]
-Thursday: [[{{_thursday_}}]]
-Friday: [[{{_friday_}}]]
-Saturday: [[{{_saturday_}}]]
+Sunday: [[Diary_{{_sunday_}}]]
+Monday: [[Diary_{{_monday_}}]]
+Tuesday: [[Diary_{{_tuesday_}}]]
+Wednesday: [[Diary_{{_wednesday_}}]]
+Thursday: [[Diary_{{_thursday_}}]]
+Friday: [[Diary_{{_friday_}}]]
+Saturday: [[Diary_{{_saturday_}}]]
 
 ## 💭review

@@ -1,7 +1,7 @@
 return {
 	"williamboman/mason.nvim",
 	cmd = { "Mason" },
-	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia", "tex" },
+	ft = { "c", "cpp", "java", "lua", "perl", "python", "rust", "sql", "markdown", "julia", "tex", "go" },
 	config = function()
 		-- import mason
 		local mason = require("mason")

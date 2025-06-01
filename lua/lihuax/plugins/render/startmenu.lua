@@ -33,7 +33,7 @@ return {
 						key = "n",
 						desc = "Notes",
 						-- action = ":NvimTreeOpen ~/Documents/ob_repo",
-						action = ":cd ~/Documents/ob_repo | NvimTreeOpen .",
+						action = ":cd ~/Documents/notes | NvimTreeOpen .",
 					},
 					{ icon = "󱗖 ", key = "d", desc = "Diary", action = "<leader>dd" },
 					{

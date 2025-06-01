@@ -1,5 +1,5 @@
 return {
-	"giusgad/pets.nvim",
+	"ApoorvShah/pets.nvim",
 	cmd = { "PetsNew", "PetsNewCustom" },
 	dependencies = { "MunifTanjim/nui.nvim", "giusgad/hologram.nvim" },
 	keys = {
@@ -11,11 +11,11 @@ return {
 	},
 	config = function()
 		require("pets").setup({
-			row = 6,
-			col = 20,
+			row = 4,
+			col = 25,
 			speed_multiplier = 1,
-			default_pet = "dog",
-			default_style = "brown",
+			default_pet = "cat",
+			default_style = "light_gray",
 			random = false,
 			death_animation = true,
 			popup = {
