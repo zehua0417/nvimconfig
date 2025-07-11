@@ -3,7 +3,7 @@ return {
 	ft = "markdown", -- Lazy loads for Markdown files matching patterns in 'files'
 	opts = {
 		-- matches TODO, TODO.md, .todo.md
-		files = { "todo", "TODO", "*.todo*", "Diary_*", "Week_*" },
+		files = { "diary/****/****W**.md", "diary/****/***/Diary_****-**-**.md" },
 		metadata = {
 			-- Example: A @priority tag that has dynamic color based on the priority value
 			-- priority = {

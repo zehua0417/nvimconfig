@@ -1,2 +1,2 @@
-templates/* filter=strip_location
+templates/**/*.md filter=strip_location
 

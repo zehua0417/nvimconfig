@@ -54,9 +54,9 @@ local function runner_term(cmd, position)
 	else
 		size = 60
 	end
-	local opencmd = "ToggleTerm name=runner direction=" .. position .. " size=" .. size
+	local opencmd = 'ToggleTerm name=" runner" direction=' .. position .. " size=" .. size
 	vim.cmd(opencmd)
-	vim.cmd("TermExec cmd=" .. cmd .. " name=runner dir=.")
+	vim.cmd("TermExec cmd=" .. cmd .. ' name=" runner" dir=.')
 end
 
 local function open_scriptlan_runner()

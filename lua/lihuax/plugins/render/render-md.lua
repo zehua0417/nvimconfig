@@ -36,6 +36,11 @@ return {
 
 		-- Set custom background for code blocks
 		-- vim.api.nvim_set_hl(0, "RenderMarkdownCode", { bg = "#282c34", fg = "#abb2bf" }) -- Set your desired background and foreground color
+		vim.api.nvim_set_hl(0, "RenderMarkdownInlineHighlight", {
+			bg = "#444444",
+			fg = "#ffff88",
+			bold = true,
+		})
 		require("render-markdown").setup({
 			callout = {
 				note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },

@@ -15,25 +15,42 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
+		"dharmx/telescope-media.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
+		local canned = require("telescope._extensions.media.lib.canned")
 
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
-				mappings = {
-					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
-						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+				extensions = {
+
+					media = {
+						backend = "viu", -- image/gif backend
+						flags = {
+							viu = {
+								move = true, -- GIF preview
+							},
+						},
+						on_confirm_single = canned.single.copy_path,
+						on_confirm_muliple = canned.multiple.bulk_copy,
+						-- cache_path = vim.fn.stdpath("cache") .. "/media",
+					},
+					mappings = {
+						i = {
+							["<C-k>"] = actions.move_selection_previous, -- move to prev result
+							["<C-j>"] = actions.move_selection_next, -- move to next result
+							["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+						},
 					},
 				},
 			},
 		})
 
 		telescope.load_extension("fzf")
+		telescope.load_extension("media")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness

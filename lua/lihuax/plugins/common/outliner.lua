@@ -46,8 +46,8 @@ return {
 				center_on_jump = true,
 
 				-- Vim options for the outline window
-				show_numbers = true,
-				show_relative_numbers = true,
+				show_numbers = false,
+				show_relative_numbers = false,
 				wrap = false,
 
 				-- true/false/'focus_in_outline'/'focus_in_code'.

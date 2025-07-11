@@ -41,4 +41,12 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-vim.api.nvim_set_hl(0, "Cursor", { foreground = "", background = "#FF0000" })
+-- vim.api.nvim_set_hl(0, "Cursor", { foreground = "", background = "#FF0000" })
+
+-- set up markdown end of line spaces highlighting
+-- vim.opt.list = true
+-- vim.opt.listchars = { space = "⋅", trail = "·" }
+
+-- vim.cmd("highlight MarkdownEOLSpaces guibg=#3c3836 guifg=#fabd2f")
+
+-- vim.fn.matchadd("MarkdownEOLSpaces", "\\s\\s$")

@@ -14,6 +14,8 @@ return {
 				ANKI_DECK = "",
 				categories = "󰍜",
 				location = "",
+				rating = "",
+				weekday = "󰨴",
 			},
 			highlight_groups = {
 				icon = "MyIconHighlight",
